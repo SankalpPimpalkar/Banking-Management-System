@@ -9,4 +9,3 @@
 - **Error Handling and Debugging**: Debugging application issues, handling exceptions, and improving user experience with meaningful error messages.
 - **Class-Based and Function-Based Views**: Understanding and implementing both paradigms for different use cases.
 - **Database Migrations**: Creating and applying migrations to handle schema changes seamlessly.
-- **REST API Basics (if applicable)**: Building RESTful endpoints using Django REST Framework (DRF) to expose banking data for integration with other systems (optional, based on your project).
