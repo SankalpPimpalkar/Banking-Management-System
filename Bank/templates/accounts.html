@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Accounts | Banking System
+{% endblock %}
+
+{% block content %}
+    <div class="w-full flex items-center justify-between">
+        <h5 class="text-gray-500 text-3xl font-bold pt-4 text-center md:text-left">
+            Your Accounts
+        </h5>
+
+        <a href="{% url 'create_account' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm">
+            Add account
+        </a>
+    </div>
+
+    <ul class="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        {% for account in accounts %}
+            <li class="border bg-gray-100 border-gray-300 p-4 rounded-md relative select-none">
+                <div>
+                    <p class="text-sm text-gray-600 ">
+                        Account number
+                    </p>
+                    <h4 class="text-gray-500 text-xl">
+                        {{account.account_number}}
+                    </h4>
+                </div>
+
+                <div class="my-2 flex gap-14">
+                    <div>
+                        <p class="text-sm text-gray-600 ">
+                            EXPIRY DATE
+                        </p>
+                        <h4 class="text-base text-gray-600">
+                            {{account.account_expiry|date:'m/Y'}}
+                        </h4>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 ">
+                            CVV
+                        </p>
+                        <h4 class="text-base text-gray-600">
+                            {{account.cvv}}
+                        </h4>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-gray-400 text-lg font-semibold">
+                        {{account.user.first_name|upper}} {{account.user.last_name|upper}}
+                    </h3>
+                </div>
+
+                <p class="absolute bg-gray-200 text-gray-600 text-sm right-0 top-0 m-4 border border-gray-400 rounded-md px-3 py-1">
+                    {{account.account_type}}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

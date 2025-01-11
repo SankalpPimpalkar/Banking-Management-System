@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Account | Banking System
+{% endblock %}
+
+{% block content %}
+    <div class="w-full h-full flex items-center justify-center mt-20">
+        <form method="post" class="border px-6 py-4 w-full max-w-xl bg-gray-50 rounded-md">
+            {% csrf_token %}
+            <h3 class="text-xl text-gray-700 font-semibold mb-4">
+                Create Account
+            </h3>
+
+            <!-- Account Type -->
+            <div class="mb-4">
+                <label for="account_type" class="block text-sm font-medium text-gray-600">Choose Account Type</label>
+                <select name="account_type" id="account_type" class="w-full mt-1 border p-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm outline-none text-gray-600 bg-gray-100">
+                    <option value="Savings">Savings</option>
+                    <option value="Current">Current</option>
+                    <option value="Fix Deposit">Fix Deposit</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-6 flex items-center justify-end">
+                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

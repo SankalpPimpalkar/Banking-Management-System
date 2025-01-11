@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>
+        {% block title %}
+            Default Title
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <nav class="bg-gray-100 px-4">
+        <div class="container mx-auto flex items-center justify-between py-3">
+            <a href="{% url 'home_page' %}" class="text-xl font-semibold text-gray-700 hover:text-gray-900">
+                Banking System
+            </a>
+
+            {% if user.is_authenticated %}
+                <div class="flex items-center gap-2">
+                    <a href="{% url 'accounts_page' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm">
+                        My Accounts
+                    </a>
+                    <a 
+                    href="{% url 'logout_account' %}"
+                    class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 text-sm">
+                        Logout
+                    </a>
+                </div>
+            {% else %}
+                <div class="flex items-center gap-2">
+                    <a 
+                        href="{% url 'login_account' %}"
+                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Login
+                    </a>
+                    <a 
+                        href="{% url 'register_account' %}"
+                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Register
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container mx-auto py-4 px-4">
+        {% block content %}
+            Default Content
+        {% endblock %}
+    </div>
+</body>
+</html>

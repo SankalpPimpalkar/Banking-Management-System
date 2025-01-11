@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Withdrawal | Banking System
+{% endblock %}
+
+{% block content %}
+    <div class="w-full h-full flex items-center justify-center mt-20">
+        <form method="post" class="border bg-gray-50 px-6 py-4 w-full max-w-xl rounded-md">
+            {% csrf_token %}
+            <h3 class="text-xl text-gray-700 font-semibold mb-4">
+                Withdraw Money
+            </h3>
+
+            <!-- Choose Account -->
+            <div class="mb-4">
+                <label for="account" class="block text-sm font-medium text-gray-600">Choose Account</label>
+                <select name="account" id="account" class="w-full mt-1 border p-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm outline-none text-gray-600 bg-gray-100">
+                    {% for account in accounts %}
+                        <option value="{{account.id}}">{{ account.account_number }} - {{ account.account_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Transaction Type -->
+            <div class="mb-4">
+                <label for="transaction_type" class="block text-sm font-medium text-gray-600">Transaction Type</label>
+                <input type="text" disabled name="type" class="px-4 py-2 border border-gray-300 bg-gray-100 w-full mt-1 rounded-md text-sm text-gray-600" value="Withdraw">
+            </div>
+
+            <!-- Amount -->
+            <div class="mb-4">
+                <label for="amount" class="block text-sm font-medium text-gray-600">Amount</label>
+                <input type="text" step="0.01" name="amount" id="amount" placeholder="Enter amount" class="px-4 py-2 border border-gray-300 bg-gray-100 w-full mt-1 rounded-md text-sm text-gray-600 outline-none">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-6 flex items-center justify-end">
+                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm">
+                    Withdraw Money
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
